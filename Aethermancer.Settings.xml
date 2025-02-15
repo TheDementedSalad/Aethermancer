@@ -1,0 +1,12 @@
+<Settings>
+    <Setting Id="Levels"  Label="Checkpoint Splits" State="false">
+		<Setting Id="Level_1_1"  Label="Clear 1-1" State="false"/>
+		<Setting Id="Level_1_2"  Label="Clear 1-2" State="false"/>
+		<Setting Id="Level_1_3"  Label="Clear 1-3" State="false"/>
+		<Setting Id="Level_1_255"  Label="Clear 1-4" State="false"/>
+		<Setting Id="Level_2_1"  Label="Clear 2-1" State="false"/>
+		<Setting Id="Level_2_2"  Label="Clear 2-2" State="false"/>
+		<Setting Id="Level_2_3"  Label="Clear 2-3" State="false"/>
+	</Setting>
+	<Setting Id="Final"  Label="Final Split (Always Active)" State="false"/>
+</Settings>
