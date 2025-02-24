@@ -3,7 +3,7 @@
 		<Setting Id="Level_1_1"  Label="Clear 1-1" State="true"/>
 		<Setting Id="Level_1_2"  Label="Clear 1-2" State="true"/>
 		<Setting Id="Level_1_3"  Label="Clear 1-3" State="true"/>
-		<Setting Id="Leve1_2_0"  Label="Clear 1-4" State="true"/>
+		<Setting Id="Level_2_0"  Label="Clear 1-4" State="true"/>
 		<Setting Id="Level_2_1"  Label="Clear 2-1" State="true"/>
 		<Setting Id="Level_2_2"  Label="Clear 2-2" State="true"/>
 		<Setting Id="Level_2_3"  Label="Clear 2-3" State="true"/>
