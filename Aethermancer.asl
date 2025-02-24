@@ -31,9 +31,9 @@ init
 		vars.Helper["enemyType"] = mono.Make<byte>("CombatController", "Instance", "CurrentEncounter", "EncounterType");
 		vars.Helper["combatState"] = mono.Make<byte>("CombatController", "Instance", "State", "State", "CurrentState", 0x40); 
 		
-		vars.Helper["LeftTalk"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "LeftCharacterDisplay", "isTalking");
-		vars.Helper["RightTalk"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "RightCharacterDisplay", "isTalking");
-		vars.Helper["RightTalkNorm"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "RightCharacterDisplay", "isNormalDialogue");
+		//vars.Helper["LeftTalk"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "LeftCharacterDisplay", "isTalking");
+		//vars.Helper["RightTalk"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "RightCharacterDisplay", "isTalking");
+		//vars.Helper["RightTalkNorm"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "RightCharacterDisplay", "isNormalDialogue");
 		
 		/*
 		vars.Helper["FinishedEncounters"] = mono.Make<byte>("GameController", "Instance", "GameState", "FinishedEncounterCount");
@@ -88,7 +88,7 @@ split
 
 isLoading
 {
-	return current.currentState == 1 || current.currentState == 3 || current.isPaused && current.currentState == 2 || current.activeScene == "MainMenuScene" || current.LeftTalk || current.RightTalk && current.RightTalkNorm;
+	return current.currentState == 1 || current.currentState == 3 || current.isPaused && current.currentState == 2 || current.activeScene == "MainMenuScene"
 }
 
 reset
