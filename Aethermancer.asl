@@ -54,7 +54,7 @@ onStart
 }
 start
 {
-	return current.Area == 0 && old.Area == 4 && current.Bubble == 255 || current.Area == 4 && current.Bubble == 255 && current.IntroSkip && !old.IntroSkip;
+	return current.Area == 0 && old.Area == 4 && current.Bubble == 255 || current.Area == 4 && current.Bubble == 255 && current.IntroSkip && !old.IntroSkip && !current.isPaused;
 }
 
 update
