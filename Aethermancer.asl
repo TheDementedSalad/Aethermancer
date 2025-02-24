@@ -24,11 +24,16 @@ init
 		vars.Helper["currentState"] = mono.Make<byte>("GameController", "Instance", "GameState", "CurrentState");
 		vars.Helper["Area"] = mono.Make<byte>("ExplorationController", "Instance", "CurrentArea");
 		vars.Helper["Bubble"] = mono.Make<byte>("ExplorationController", "Instance", "CurrentBubble");
+		vars.Helper["IntroSkip"] = mono.Make<bool>("TutorialIntroScript", "Instance", "IntroCutscene", "IntroHasBeenSkipped");
 		vars.Helper["isPaused"] = mono.Make<bool>("GameController", "Instance", "TimeScaleManager", "isPaused");
 		vars.Helper["useLoadScreen"] = mono.Make<byte>("GameController", "Instance", "SceneLoader", "useLoadingScreen");
 		
 		vars.Helper["enemyType"] = mono.Make<byte>("CombatController", "Instance", "CurrentEncounter", "EncounterType");
 		vars.Helper["combatState"] = mono.Make<byte>("CombatController", "Instance", "State", "State", "CurrentState", 0x40); 
+		
+		vars.Helper["LeftTalk"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "LeftCharacterDisplay", "isTalking");
+		vars.Helper["RightTalk"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "RightCharacterDisplay", "isTalking");
+		vars.Helper["RightTalkNorm"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "RightCharacterDisplay", "isNormalDialogue");
 		
 		/*
 		vars.Helper["FinishedEncounters"] = mono.Make<byte>("GameController", "Instance", "GameState", "FinishedEncounterCount");
@@ -49,16 +54,14 @@ onStart
 }
 start
 {
-	return current.Area == 0 && old.Area == 4 && current.Bubble == 255;
+	return current.Area == 0 && old.Area == 4 && current.Bubble == 255 || current.Area == 4 && current.Bubble == 255 && current.IntroSkip && !old.IntroSkip;
 }
 
 update
 {
 	current.activeScene = vars.Helper.Scenes.Active.Name == null ? current.activeScene : vars.Helper.Scenes.Active.Name;			//creates a function that tracks the games active Scene name
-    //current.loadingScene = vars.Helper.Scenes.Loaded[0].Name == null ? current.loadingScene : vars.Helper.Scenes.Loaded[0].Name;	//creates a function that tracks the games currently loading Scene name
 
     //if(current.activeScene != old.activeScene) vars.Log("active: Old: \"" + old.activeScene + "\", Current: \"" + current.activeScene + "\"");			//Prints when a new scene becomes active
-    //if(current.loadingScene != old.loadingScene) vars.Log("loading: Old: \"" + old.loadingScene + "\", Current: \"" + current.loadingScene + "\"");		//Prints when a new scene starts loading
 }
 
 split
@@ -85,10 +88,10 @@ split
 
 isLoading
 {
-	return current.currentState == 1 || current.currentState == 3 || current.isPaused && current.currentState == 2 || current.activeScene == "MainMenuScene";
+	return current.currentState == 1 || current.currentState == 3 || current.isPaused && current.currentState == 2 || current.activeScene == "MainMenuScene" || current.LeftTalk || current.RightTalk && current.RightTalkNorm;
 }
 
 reset
 {
-	return current.currentState == 1 && current.Area == 4 && old.Area == 0;
+	return current.activeScene != "MainMenuScene" && old.activeScene == "MainMenuScene";
 }
