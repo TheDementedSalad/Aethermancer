@@ -29,6 +29,7 @@ init
 		vars.Helper["useLoadScreen"] = mono.Make<byte>("GameController", "Instance", "SceneLoader", "useLoadingScreen");
 		
 		vars.Helper["enemyType"] = mono.Make<byte>("CombatController", "Instance", "CurrentEncounter", "EncounterType");
+		vars.Helper["enemiesDead"] = mono.Make<byte>("CombatController", "Instance", "DeadEnemies", 0x18);
 		vars.Helper["combatState"] = mono.Make<byte>("CombatController", "Instance", "State", "State", "CurrentState", 0x40); 
 		
 		//vars.Helper["LeftTalk"] = mono.Make<bool>("UIController", "Instance", "DialogueDisplay", "LeftCharacterDisplay", "isTalking");
@@ -72,7 +73,7 @@ split
 		setting = "Level_" + current.Area + "_" + current.Bubble;
 	}
 
-	if(current.Area == 2 && current.Bubble == 3 && current.combatState == 5 && old.combatState != 5 && current.enemyType == 2)
+	if(current.Area == 2 && current.Bubble == 3 && current.combatState == 5 && old.combatState != 5 && current.enemyType == 2  && current.enemiesDead == 1)
 	{
 		return true;
 	}
