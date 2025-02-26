@@ -89,7 +89,7 @@ split
 
 isLoading
 {
-	return current.currentState == 1 || current.currentState == 3 || current.isPaused && current.currentState == 2 || current.activeScene == "MainMenuScene";
+	return current.currentState == 1 || current.currentState == 3 || current.currentState == 7 ||  current.isPaused && current.currentState == 2 || current.activeScene == "MainMenuScene";
 }
 
 reset
